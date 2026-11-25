@@ -850,8 +850,43 @@ const weekNineQuestions: Question[] = [
   { id: "week12", name: "12주차", range: "32문제", min: 326, max: 357 },
   ] as const
 
+const NHI_SUBJECT = "국민건강보험법"
+
+const healthInsuranceLawOneQuestions: Question[] = [
+  { id: "nhi-1", subject: NHI_SUBJECT, question: "근로자에 대한 설명으로 옳은 것은?", options: ["국가 및 지방자치단체에서 상시 공무에 종사하는 사람", "근로의 대가로 보수를 받아 생활하는 사람으로, 공무원과 교직원을 제외함", "사립학교의 경영기관에서 근무하는 교원과 직원", "사업주 및 공무원이 소속되어 있는 기관의 장"], type: "mcq", correctAnswer: 1, explanation: "제3조: 근로자는 직업의 종류와 관계없이 근로의 대가로 보수를 받아 생활하는 사람(공무원·교직원 제외)입니다." },
+  { id: "nhi-2", subject: NHI_SUBJECT, question: "사용자에 대한 설명으로 옳은 것은?", options: ["근로의 대가로 보수를 받아 생활하는 사람", "국가 및 지방자치단체에서 상시 공무에 종사하는 사람", "사업주, 공무원이 소속되어 있는 기관의 장, 교직원이 소속되어 있는 사립학교를 운영하는 사람", "사립학교의 경영기관에서 근무하는 교원과 직원"], type: "mcq", correctAnswer: 2, explanation: "제3조: 사용자는 사업주, 공무원이 소속된 기관의 장, 교직원이 소속된 사립학교를 운영하는 사람입니다." },
+  { id: "nhi-3", subject: NHI_SUBJECT, question: "공무원에 대한 설명으로 옳은 것은?", options: ["사립학교의 경영기관에서 근무하는 교원과 직원", "국가 및 지방자치단체에서 상시 공무에 종사하는 사람", "근로의 대가로 보수를 받아 생활하는 사람", "사업소 또는 사무소에서 근무하는 사람"], type: "mcq", correctAnswer: 1, explanation: "제3조: 공무원은 국가나 지방자치단체에서 상시 공무에 종사하는 사람입니다." },
+  { id: "nhi-4", subject: NHI_SUBJECT, question: "교직원에 대한 설명으로 옳은 것은?", options: ["국가 및 지방자치단체에서 상시 공무에 종사하는 사람", "사업주와 공무원이 소속되어 있는 기관의 장", "사립학교의 경영기관에서 근무하는 교원과 직원", "근로의 대가로 보수를 받아 생활하는 사람"], type: "mcq", correctAnswer: 2, explanation: "제3조: 교직원은 사립학교나 사립학교 경영기관에서 근무하는 교원과 직원입니다." },
+  { id: "nhi-5", subject: NHI_SUBJECT, question: "국민건강보험종합계획의 주관자와 수립 주기를 바르게 짝지은 것은?", options: ["보건복지부장관 / 5년", "보건복지부차관 / 3년", "국민건강보험공단 이사장 / 5년", "건강보험심사평가원장 / 매년"], type: "mcq", correctAnswer: 0, explanation: "보건복지부장관이 5년마다 국민건강보험종합계획을 수립합니다." },
+  { id: "nhi-6", subject: NHI_SUBJECT, question: "보건복지부장관은 건강보험종합계획에 관한 보고서를 누구에게 보고해야 하는가?", options: ["국민건강보험공단", "국회 소관 상임위원회", "건강보험심사평가원", "지방자치단체의 장"], type: "mcq", correctAnswer: 1, explanation: "보건복지부장관은 종합계획 관련 보고서를 국회 소관 상임위원회에 보고해야 합니다." },
+  { id: "nhi-7", subject: NHI_SUBJECT, question: "건강보험정책심의위원회의 위원장은 누구인가?", options: ["보건복지부장관", "보건복지부차관", "국민건강보험공단 이사장", "건강보험심사평가원장"], type: "mcq", correctAnswer: 1, explanation: "건강보험정책심의위원회의 위원장은 보건복지부차관입니다." },
+  { id: "nhi-8", subject: NHI_SUBJECT, question: "건강보험정책심의위원회에서 심의·의결하는 사항으로 틀린 것은?", options: ["국민건강보험종합계획 및 시행계획에 관한 사항", "요양급여의 기준에 관한 사항", "요양급여비용에 관한 사항", "직장가입자의 보험료율에 관한 사항", "요양기관 현황 신고에 관한 사항"], type: "mcq", correctAnswer: 4, explanation: "요양기관 현황 신고는 건강보험심사평가원에 하는 사항으로, 심의위원회의 심의·의결 사항이 아닙니다." },
+  { id: "nhi-9", subject: NHI_SUBJECT, question: "피부양자에 해당하는 것으로 틀린 것은?", options: ["직장가입자의 배우자", "직장가입자의 직계존속", "직장가입자의 직계비속과 그 배우자", "직장가입자의 형제·자매", "직장가입자의 사촌"], type: "mcq", correctAnswer: 4, explanation: "피부양자는 배우자, 직계존속, 직계비속과 그 배우자, 형제·자매입니다. 사촌은 해당하지 않습니다." },
+  { id: "nhi-10", subject: NHI_SUBJECT, question: "다음 중 국민건강보험 가입자에 해당하는 사람은?", options: ["국내에 거주하는 국민으로서 가입자 또는 피부양자에 해당하는 사람", "국내에 거주하지 않는 외국인", "국내에 거주하는 국민 중 수급권자에 해당하는 사람", "국내에 거주하는 국민 중 유공자 및 의료보호대상자에 해당하는 사람"], type: "mcq", correctAnswer: 0, explanation: "수급권자와 유공자 등 의료보호대상자는 가입자에서 제외됩니다." },
+  { id: "nhi-11", subject: NHI_SUBJECT, question: "직장가입자에 해당하지 않는 사람은?", options: ["근로자", "사용자", "공무원", "교직원", "고용 기간이 1개월 미만인 일용근로자"], type: "mcq", correctAnswer: 4, explanation: "고용 기간이 1개월 미만인 일용근로자는 직장가입자에서 제외됩니다." },
+  { id: "nhi-12", subject: NHI_SUBJECT, question: "지역가입자에 해당하는 설명으로 옳은 것은?", options: ["근로자와 사용자만을 의미한다.", "공무원과 교직원만을 의미한다.", "직장가입자와 피부양자를 제외한 가입자를 말한다.", "직장가입자의 배우자와 직계존속만을 의미한다."], type: "mcq", correctAnswer: 2, explanation: "지역가입자는 직장가입자와 그 피부양자를 제외한 가입자입니다." },
+  { id: "nhi-13", subject: NHI_SUBJECT, question: "건강보험 가입 관련 자격변동의 시기로 올바른 것은?", options: ["지역가입자가 근로자 등으로 사용된 날의 다음 날", "직장가입자가 다른 사용자로 되거나 근로자 등으로 사용된 날", "휴업 또는 폐업한 날", "지역가입자가 다른 세대로 전입한 날의 다음 날"], type: "mcq", correctAnswer: 1, explanation: "제9조: 직장가입자가 다른 사용자에게 사용되거나 근로자 등으로 사용된 날 자격이 변동됩니다." },
+  { id: "nhi-14", subject: NHI_SUBJECT, question: "사용자와 세대주는 자격변동이 있는 경우 보험자에게 신고해야 한다. 그에 맞는 기간은?", options: ["7일 이내", "10일 이내", "14일 이내", "30일 이내"], type: "mcq", correctAnswer: 2, explanation: "자격변동 시 14일 이내에 보험자에게 신고해야 합니다." },
+  { id: "nhi-15", subject: NHI_SUBJECT, question: "국민건강보험 가입자 자격이 상실되는 시기로 옳은 것은?", options: ["사망한 날", "국적을 잃은 날", "국내에 거주하지 아니하게 된 날", "피부양자가 된 날", "수급권자가 된 날의 다음 날"], type: "mcq", correctAnswer: 3, explanation: "제10조: 사망·국적상실·국내 비거주는 그 다음 날, 피부양자가 된 날과 수급권자가 된 날은 그 날 자격을 상실합니다." },
+  { id: "nhi-16", subject: NHI_SUBJECT, question: "요양급여의 종류로 올바르지 않은 것은?", options: ["진찰 및 검사", "약제 및 치료재료의 지급", "처치, 수술 및 그 밖의 치료", "예방 및 재활", "도수치료"], type: "mcq", correctAnswer: 4, explanation: "제41조 요양급여에 도수치료는 포함되지 않습니다." },
+  { id: "nhi-17", subject: NHI_SUBJECT, question: "요양기관에 해당하지 않는 곳은?", options: ["의료기관", "약국", "한국희귀·필수의약품센터", "보건소", "부속 의료기관"], type: "mcq", correctAnswer: 4, explanation: "부속 의료기관은 요양기관에서 제외되는 의료기관입니다." },
+  { id: "nhi-18", subject: NHI_SUBJECT, question: "요양기관에서 제외되는 의료기관에 대한 설명으로 틀린 것은?", options: ["부속 의료기관", "사회복지시설에 수용된 사람을 진료하는 의료기관", "과징금 처분을 5년 동안 2회 받은 의료기관", "면허정지처분을 5년 동안 2회 이상 받은 의료인이 운영하는 의료기관", "면허정지처분을 5년 동안 1회 받은 의료인이 운영하는 의료기관"], type: "mcq", correctAnswer: 4, explanation: "면허정지처분은 5년 동안 2회 이상 받은 경우에 제외 대상이 됩니다." },
+  { id: "nhi-19", subject: NHI_SUBJECT, question: "요양기관 현황에 대한 신고를 할 때 신고 대상 기관은 어디인가?", options: ["보건복지부", "국민건강보험공단", "국회 소관 상임위원회", "건강보험심사평가원", "지방자치단체"], type: "mcq", correctAnswer: 3, explanation: "요양기관 현황은 건강보험심사평가원에 신고합니다." },
+]
+
+export const healthInsuranceSets = [
+  { id: "nhi1", name: "건보법1", range: `${healthInsuranceLawOneQuestions.length}문제`, questions: healthInsuranceLawOneQuestions },
+] as const
+
+export function isHealthInsuranceSet(setId: string) {
+  return healthInsuranceSets.some((set) => set.id === setId)
+}
+
 // 의료관계법규는 주차별 범위 안에서 문제와 선택지를 무작위로 섞는다.
 export function getQuestionsForWeek(weekId: string): Question[] {
+  const insuranceSet = healthInsuranceSets.find((set) => set.id === weekId)
+  if (insuranceSet) return shuffle([...insuranceSet.questions]).map(shuffleQuestionOptions)
+
   const week = lawWeeks.find((item) => item.id === weekId)
   if (!week) return []
 

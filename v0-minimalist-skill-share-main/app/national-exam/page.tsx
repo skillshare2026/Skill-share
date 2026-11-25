@@ -4,7 +4,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
-import { examPeriods, lawWeeks } from "@/lib/national-exam-data"
+import { examPeriods, healthInsuranceSets, lawWeeks } from "@/lib/national-exam-data"
 
 export default function NationalExamPage() {
   const router = useRouter()
@@ -75,6 +75,29 @@ export default function NationalExamPage() {
                 </button>
               ))}
             </div>
+
+            <section className="mt-8" aria-labelledby="health-insurance-heading">
+              <h2 id="health-insurance-heading" className="mb-3 text-center text-sm font-light text-[#171717]">
+                국민건강보험법
+              </h2>
+              <div className="grid grid-cols-3 gap-2">
+                {healthInsuranceSets.map((set) => (
+                  <button
+                    key={set.id}
+                    onClick={() => setSelectedWeek(set.id)}
+                    aria-pressed={selectedWeek === set.id}
+                    className={`rounded-md border px-2 py-3 text-center transition-colors duration-150 ${
+                      selectedWeek === set.id
+                        ? "border-[#171717] bg-white text-[#171717]"
+                        : "border-[#E5E5E5] text-[#a3a3a3] hover:border-[#a3a3a3]"
+                    }`}
+                  >
+                    <span className="block text-sm font-light">{set.name}</span>
+                    <span className="mt-1 block text-[11px] font-light">{set.range}</span>
+                  </button>
+                ))}
+              </div>
+            </section>
           </div>
         )}
 

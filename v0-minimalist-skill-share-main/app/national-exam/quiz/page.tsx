@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft, X } from "lucide-react"
-import { getQuestionsForPeriod, getQuestionsForWeek, examPeriods, lawWeeks, type Question } from "@/lib/national-exam-data"
+import { getQuestionsForPeriod, getQuestionsForWeek, isHealthInsuranceSet, examPeriods, lawWeeks, type Question } from "@/lib/national-exam-data"
 
 interface UserAnswer {
   questionId: string
@@ -33,6 +33,7 @@ function QuizContent() {
 
   const currentQuestion = questions[currentIndex]
   const progress = questions.length ? ((currentIndex + 1) / questions.length) * 100 : 0
+  const gradeOnSelect = periodId === "period2" && isHealthInsuranceSet(weekId)
 
   const handleOptionClick = (optionIndex: number) => {
     if (currentQuestion.type === "multi-mcq" && !isAnswered) {
@@ -47,12 +48,14 @@ function QuizContent() {
 
     if (isAnswered) return
     setSelectedOption(optionIndex)
+    if (gradeOnSelect) handleAnswerSubmit(optionIndex)
   }
 
-  const handleAnswerSubmit = () => {
+  const handleAnswerSubmit = (optionOverride?: number) => {
     if (!currentQuestion || currentQuestion.type === "short-answer" || isAnswered) return
 
-    const selected = Array.isArray(selectedOption) ? selectedOption : selectedOption === null ? [] : [selectedOption]
+    const choice = optionOverride ?? selectedOption
+    const selected = Array.isArray(choice) ? choice : choice === null ? [] : [choice]
     if (selected.length === 0) return
 
     const correct = Array.isArray(currentQuestion.correctAnswer)
@@ -391,9 +394,9 @@ setSelectedOption(
             )
           })}
         </div>
-        {!(["short-answer", "matching"] as const).includes(currentQuestion?.type as "short-answer" | "matching") && !isAnswered && (
+        {!(["short-answer", "matching"] as const).includes(currentQuestion?.type as "short-answer" | "matching") && !isAnswered && !gradeOnSelect && (
           <button
-            onClick={handleAnswerSubmit}
+            onClick={() => handleAnswerSubmit()}
             disabled={Array.isArray(selectedOption) ? selectedOption.length === 0 : selectedOption === null}
             className="mt-4 w-full rounded-md bg-[#171717] py-3 text-sm font-light text-white transition-colors hover:bg-[#404040] disabled:cursor-not-allowed disabled:bg-[#E5E5E5] disabled:text-[#a3a3a3]"
           >
@@ -431,7 +434,7 @@ setSelectedOption(
                   ? "정답입니다"
                   : "오답입니다"}
             </p>
-            {(currentQuestion.type === "short-answer" || currentQuestion.type === "matching") && (
+            {(currentQuestion.type === "short-answer" || currentQuestion.type === "matching" || gradeOnSelect) && (
               <p className="text-xs text-[#171717] font-medium leading-relaxed mb-2">
                 정답: {getAnswerText(currentQuestion)}
               </p>
